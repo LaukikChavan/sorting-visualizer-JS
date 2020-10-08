@@ -1,0 +1,11 @@
+{
+  "name": "Sort-Visualizer-JS",
+  "version": "0.0.1",
+  "description": "Visualizer for Sorting Algorithms",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Laukik Chavan",
+}
