@@ -1,11 +1,11 @@
 let arr = []
-for (let i = 0; i < 15; i++) {
+for (let i = 0; i < 10; i++) {
 	if (Math.random() > 0.5)
 		arr.push(Math.round(Math.random() * 100))
 	else
 		arr.push(-Math.round(Math.random() * 100))
 }
-// arr.sort((a ,b) => a - b)
+arr.sort((a, b) => a - b)
 // arr.reverse()
 let poppins;
 
@@ -40,7 +40,7 @@ function draw() {
 
 	translate(-width * x, 0, 0)
 	arr.forEach((e, i) => {
-		const m = map(arr[i], 0, max(arr), 0, 0.5)
+		const m = map(arr[i], 0, max(abs(min(arr)), max(arr)), 0, 1)
 		translate(boxWidth, 0, 0)
 		push();
 		translate(0, 0, (height * m) / 2)
