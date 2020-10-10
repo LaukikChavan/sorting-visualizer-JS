@@ -2,17 +2,13 @@
   "name": "sorting-visualizer-JS",
   "version": "0.0.1",
   "description": "Visualizer for Sorting Algorithms",
-  "main": "src/index.js",
+  "main": "src/sketch.js",
   "scripts": {
-    "start": "live-server --open=public --entry-file=index.html"
+    "start": "live-server --entry-file=index.html"
   },
   "keywords": [],
   "author": "Varun Irani",
-  "dependencies": {
-    "p5": "^1.1.9"
-  },
   "devDependencies": {
-    "nodemon": "^2.0.4",
     "live-server": "^1.2.1"
   },
   "license": "MIT"

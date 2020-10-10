@@ -1338,11 +1338,6 @@ p-cancelable@^1.0.0:
   resolved "https://registry.yarnpkg.com/p-cancelable/-/p-cancelable-1.1.0.tgz#d078d15a3af409220c886f1d9a0ca2e441ab26cc"
   integrity sha512-s73XxOZ4zpt1edZYZzvhqFa6uvQc1vwUa0K0BdtIZgQMAJj9IbebH+JkgKZc9h+B05PKHLOTl4ajG1BmNrVZlw==
 
-p5@^1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/p5/-/p5-1.1.9.tgz#b33692100f991b993128fd8e3324cc56adad68b2"
-  integrity sha512-gU+UBEAXLGt3RQFzTtsKijF+eBidweIqRrg51AniuLG8LKHzylrB5ilIOzyDgcR1/hWt6danWPArjaVtXHWfWg==
-
 package-json@^6.3.0:
   version "6.5.0"
   resolved "https://registry.yarnpkg.com/package-json/-/package-json-6.5.0.tgz#6feedaca35e75725876d0b0e64974697fed145b0"
