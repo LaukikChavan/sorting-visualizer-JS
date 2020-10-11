@@ -1,11 +1,15 @@
 {
-  "name": "Sort-Visualizer-JS",
+  "name": "sorting-visualizer-JS",
   "version": "0.0.1",
   "description": "Visualizer for Sorting Algorithms",
-  "main": "index.js",
+  "main": "src/sketch.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "live-server --entry-file=index.html"
   },
   "keywords": [],
-  "author": "Laukik Chavan",
+  "author": "Varun Irani",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  },
+  "license": "MIT"
 }
