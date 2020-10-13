@@ -1,59 +1,109 @@
-let arr = []
+let values = []
 for (let i = 0; i < 10; i++) {
-	if (Math.random() > 0.5)
-		arr.push(Math.round(Math.random() * 100))
-	else
-		arr.push(-Math.round(Math.random() * 100))
+  if (Math.random() >= 0.5)
+    values.push(Math.round(Math.random() * 200))
+  else
+    values.push(-Math.round(Math.random() * 200))
 }
-arr.sort((a, b) => a - b)
+// arr.sort((a, b) => a - b)
 // arr.reverse()
-let poppins;
+let inconsolata;
 
 function preload() {
-	poppins = loadFont('../fonts/Inconsolata-Bold.ttf');
+  inconsolata = loadFont('../fonts/Inconsolata-Bold.ttf');
 }
 
 const spacing = 0.14
 let x = 0;
+let boxes = [];
+let boxWidth;
 
 function setup() {
-	createCanvas(windowWidth / 1.5, windowHeight, WEBGL);
-	textFont(poppins);
-	textAlign(CENTER, CENTER);
-	for (let i = 0; i <= arr.length; i++) {
-		x += (spacing / 2)
-	}
+  createCanvas(windowWidth / 1.5, windowHeight, WEBGL);
+  textFont(inconsolata);
+  textAlign(CENTER, CENTER);
+  for (let i = 0; i <= values.length; i++) {
+    x += (spacing / 2)
+  }
+  frameRate(2)
+
 }
 
 function windowResized() {
-	resizeCanvas(windowWidth / 1.5, windowHeight)
+  resizeCanvas(windowWidth / 1.5, windowHeight)
 }
 
-function draw() {
-	const boxWidth = width * spacing
-	textSize(boxWidth * 0.33);
-	ortho(-width, width, -height, height, -10000, 10000)
-	background(255);
-	angleMode(DEGREES);
-	rotateX(60);
-	rotateZ(30);
 
-	translate(-width * x, 0, 0)
-	arr.forEach((e, i) => {
-		const m = map(arr[i], 0, max(abs(min(arr)), max(arr)), 0, 1)
-		translate(boxWidth, 0, 0)
-		push();
-		translate(0, 0, (height * m) / 2)
-		push();
-		translate(0, (boxWidth) / 1.5, 0)
-		rotateX(270);
-		fill(0)
-		text(e, 0, 0)
-		pop();
-		stroke(0);
-		strokeWeight(3);
-		fill('#eee')
-		box(boxWidth, boxWidth, height * m);
-		pop();
-	})
+let j = 0;
+let i = 0
+
+function draw() {
+  const n = max(abs(min(values)), max(values))
+  boxWidth = width * spacing
+  textSize(boxWidth * 0.33);
+  boxes = []
+
+  ortho(-width, width, -height, height, -10000, 10000)
+  background(255);
+  angleMode(DEGREES);
+  rotateX(60);
+  rotateZ(30);
+  translate(-width * x, 0, 0)
+
+  values.forEach((e) => {
+    const m = map(e, 0, n, 0, 0.7)
+    const box = new Box(boxWidth, boxWidth, height * m, '#c5e9ff', '#000', e);
+    boxes.push(box)
+  })
+
+  const a = values[j];
+  const b = values[j + 1]
+
+  boxes[j].boxColor = "#98ff99"
+  boxes[j + 1].boxColor = "#deffe0"
+
+  if (a > b) {
+    swap(values, j, j + 1)
+  }
+
+  if (i < values.length) {
+    j = j + 1;
+    if (j >= values.length - i - 1) {
+      // boxes[values.length - i - 1].boxColor = "#e6c2ff"
+      j = 0
+      i = i + 1
+    }
+  } else {
+    boxes.forEach(box => {
+      box.boxColor = "#f0dcff";
+    })
+    noLoop()
+  }
+
+  boxes.forEach(box => {
+    translate(boxWidth, 0, 0);
+    box.show();
+  })
+}
+
+// function bubbleSort(arr, n, asc) {
+//   for (let i = 0; i < n - 1; i++) {
+//     for (let j = 0; j < n - i - 1; j++) {
+//       if (asc) {
+//         if (arr[j] > arr[j + 1]) {
+//           swap(arr, j, j + 1)
+//         }
+//       } else {
+//         if (arr[j + 1] > arr[j]) {
+//           swap(arr, j, j + 1)
+//         }
+//       }
+//     }
+//   }
+// }
+
+function swap(arr, i, j) {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
 }
