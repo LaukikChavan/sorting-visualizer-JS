@@ -1,18 +1,43 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sorting Visualizer JS</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
-            integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="index.css">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Sorting Visualizer JS</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.min.js"
+					integrity="sha512-WIklPM6qPCIp6d3fSSr90j+1unQHUOoWDS4sdTiR8gxUTnyZ8S2Mr8e10sKKJ/bhJgpAa/qG068RDkg6fIlNFA=="
+					crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <script src="./src/sketch.js"></script>
-    <script src="./src/Box.js"></script>
+<div id="sketch-holder"></div>
+<div id="controls">
+	<h1 class="text">Sorting Visualizer</h1>
+	<p class="text">Boxes</p>
+	<div style="display: flex; align-items: center">
+		<button class="decrease" onclick="decreaseValueCount()">-</button>
+		<p class="text boxes" style="margin: 0 1em 0 1em"></p>
+		<button class="increase" onclick="increaseValueCount()">+</button>
+	</div>
+
+	<p class="text">Speed</p>
+	<div style="display: flex; align-items: center">
+		<button class="decrease" onclick="decreaseSpeed()">-</button>
+		<p class="text frames" style="margin: 0 1em 0 1em"></p>
+		<button class="increase" onclick="increaseSpeed()">+</button>
+	</div>
+
+	<br>
+	<button class="random" onclick="randomize()">Randomize Values</button>
+	<br>
+</div>
+
+<script src="./src/globals.js"></script>
+<script src="./src/Box.js"></script>
+<script src="./src/sketch.js"></script>
+<script src="./src/index.js"></script>
+
 </body>
 </html>
