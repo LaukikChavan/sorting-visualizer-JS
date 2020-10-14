@@ -1,9 +1,96 @@
 html, body {
+	background: rgb(20, 20, 20);
+	font-family: 'Fira Code', sans-serif;
+	height: 100%;
+}
+
+body {
 	margin: 0;
 	padding: 0;
-	background: rgb(20, 20, 20);
+	display: flex;
+	flex-direction: row;
+}
+
+.text {
+	color: wheat;
+}
+
+button {
+	/*padding: 1em;*/
+	box-shadow: none;
+	font-family: "Fira Code", sans-serif;
+	color: aliceblue;
+	border: none;
+	border-radius: 1em;
+}
+
+.hidden {
+	display: none;
+}
+
+.start {
+	padding: 1em;
+	margin-top: 1em;
+	background-color: #4caf50;
+}
+
+.start:active {
+	background-color: #2f6b33;
+}
+
+.stop {
+	padding: 1em;
+	margin-top: 1em;
+	background-color: #d05e5e;
+}
+
+.stop:active {
+	background-color: #b33030;
+}
+
+.random:active {
+	background-color: #834486;
+}
+
+.increase:active {
+	background-color: #22624e;
+}
+
+.decrease:active {
+	background-color: #395394;
+}
+
+.random {
+	padding: 1em;
+	margin-top: 1em;
+	font-weight: bold;
+	color: #000;
+	background-color: #da6edd;
+}
+
+.increase {
+	height: 2em;
+	width: 2em;
+	border-radius: 100%;
+	font-weight: bold;
+	font-size: 12pt;
+	background-color: #228868;
+}
+
+.decrease {
+	height: 2em;
+	width: 2em;
+	border-radius: 100%;
+	font-weight: bold;
+	font-size: 12pt;
+	background-color: #536fbc;
+}
+
+#controls {
+	padding: 1em;
+	justify-content: center;
 }
 
 canvas {
-	display: block;
+	display: flex;
 }

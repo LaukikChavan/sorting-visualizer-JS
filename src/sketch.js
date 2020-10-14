@@ -1,12 +1,11 @@
 let values = []
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < globals.valueLength; i++) {
   if (Math.random() >= 0.5)
     values.push(Math.round(Math.random() * 200))
   else
     values.push(-Math.round(Math.random() * 200))
 }
-// arr.sort((a, b) => a - b)
-// arr.reverse()
+
 let inconsolata;
 
 function preload() {
@@ -19,14 +18,13 @@ let boxes = [];
 let boxWidth;
 
 function setup() {
-  createCanvas(windowWidth / 1.5, windowHeight, WEBGL);
+  const c = createCanvas(windowWidth / 1.5, windowHeight, WEBGL);
+  c.parent('sketch-holder')
   textFont(inconsolata);
   textAlign(CENTER, CENTER);
   for (let i = 0; i <= values.length; i++) {
     x += (spacing / 2)
   }
-  frameRate(2)
-
 }
 
 function windowResized() {
@@ -38,6 +36,7 @@ let j = 0;
 let i = 0
 
 function draw() {
+  frameRate(globals.frame_rate)
   const n = max(abs(min(values)), max(values))
   boxWidth = width * spacing
   textSize(boxWidth * 0.33);
@@ -56,28 +55,35 @@ function draw() {
     boxes.push(box)
   })
 
-  const a = values[j];
-  const b = values[j + 1]
+  if(globals.start) {
+    const a = values[j];
+    const b = values[j + 1]
 
-  boxes[j].boxColor = "#98ff99"
-  boxes[j + 1].boxColor = "#deffe0"
+    boxes[j].boxColor = "#98ff99"
+    boxes[j + 1].boxColor = "#deffe0"
 
-  if (a > b) {
-    swap(values, j, j + 1)
-  }
-
-  if (i < values.length) {
-    j = j + 1;
-    if (j >= values.length - i - 1) {
-      // boxes[values.length - i - 1].boxColor = "#e6c2ff"
-      j = 0
-      i = i + 1
+    if (a > b) {
+      swap(values, j, j + 1)
     }
-  } else {
-    boxes.forEach(box => {
-      box.boxColor = "#f0dcff";
-    })
-    noLoop()
+
+    if (i < values.length) {
+      j = j + 1;
+      if (j >= values.length - i - 1) {
+        // boxes[values.length - i - 1].boxColor = "#e6c2ff"
+        j = 0
+        i = i + 1
+      }
+    } else {
+      boxes.forEach(box => {
+        box.boxColor = "#f0dcff";
+      })
+      globals.start = false
+      startButton.setAttribute("class", "start")
+      startButton.innerHTML = "Start Bubble Sort"
+      randomButton.removeAttribute("disabled")
+      increaseButton.removeAttribute("disabled")
+      decreaseButton.removeAttribute("disabled")
+    }
   }
 
   boxes.forEach(box => {
